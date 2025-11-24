@@ -8,6 +8,7 @@ import { getMessagesES } from './getMessages'
 import CalendarEvent from '../componenets/CalendarEvent'
 import { useState } from 'react'
 import CalendarModal from '../componenets/CalendarModal'
+import { useUiStore } from '../../hooks/useUiStore'
 
 const locales = {
   'es': esES,
@@ -33,6 +34,9 @@ const events = [{
 }]
 
 const CalendarPage = () => {
+
+  const {openDateModal} = useUiStore();
+
  const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week')
 
 
@@ -53,6 +57,7 @@ const CalendarPage = () => {
   }
   const onDoubleClick = (event) => {
     console.log({doubleClick: event})
+    openDateModal();
   }
 
   const onSelect = (event) => {
