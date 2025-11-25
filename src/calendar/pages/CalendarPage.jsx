@@ -1,6 +1,6 @@
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
-import { addHours, format, parse, startOfWeek, getDay } from 'date-fns'
+import {  format, parse, startOfWeek, getDay } from 'date-fns'
 import esES from 'date-fns/locale/es'
 
 import Navbar from '../../auth/components/Navbar'
@@ -9,6 +9,7 @@ import CalendarEvent from '../componenets/CalendarEvent'
 import { useState } from 'react'
 import CalendarModal from '../componenets/CalendarModal'
 import { useUiStore } from '../../hooks/useUiStore'
+import useCalendarStore from '../../hooks/useCalendarStore'
 
 const locales = {
   'es': esES,
@@ -21,21 +22,12 @@ const localizer = dateFnsLocalizer({
   getDay,
   locales,
 })
-const events = [{
-  title: ' reunion',
-  notes: ' Pagina de yoga',
-  start: new Date(),
-  end: addHours(new Date(), 2),
-  bgColor: '#fafafa',
-  user: {
-    _id: '123',
-    name: 'Zineb'
-  }
-}]
+
 
 const CalendarPage = () => {
 
   const {openDateModal} = useUiStore();
+  const {events, setActiveEvent} = useCalendarStore();
 
  const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week')
 
@@ -61,7 +53,8 @@ const CalendarPage = () => {
   }
 
   const onSelect = (event) => {
-    console.log({click: event})
+    // console.log({click: event})
+    setActiveEvent(event);
   }
 
   const onViewChanged = (event) => {
