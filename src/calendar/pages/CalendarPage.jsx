@@ -49,7 +49,7 @@ const CalendarPage = () => {
 
   }
   const onDoubleClick = (event) => {
-    console.log({doubleClick: event})
+    // console.log({doubleClick: event})
     openDateModal();
   }
 
