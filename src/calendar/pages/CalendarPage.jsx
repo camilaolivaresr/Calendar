@@ -11,6 +11,7 @@ import CalendarModal from '../componenets/CalendarModal'
 import { useUiStore } from '../../hooks/useUiStore'
 import useCalendarStore from '../../hooks/useCalendarStore'
 import FabAddNew from '../componenets/FabAddNew'
+import FabDelete from '../componenets/FabDelete'
 
 const locales = {
   'es': esES,
@@ -90,6 +91,7 @@ const CalendarPage = () => {
         />
         <CalendarModal/>
         <FabAddNew/>
+        <FabDelete/>
       </div>
     </div>
   )

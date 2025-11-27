@@ -97,6 +97,7 @@ const CalendarModal = () => {
 
     await startSavingEvent(formValue);
     closeDateModal();
+    setFormSubmitted(false);
   }
 
   return (
