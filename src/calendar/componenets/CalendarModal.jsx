@@ -38,8 +38,8 @@ const CalendarModal = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const [formValue, setFormValue] = useState({
-    title: 'cami',
-    notes: 'pagina',
+    title: '',
+    notes: '',
     start: new Date(),
     end: addHours(new Date(), 2)
 
