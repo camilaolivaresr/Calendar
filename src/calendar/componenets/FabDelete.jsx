@@ -15,7 +15,7 @@ const FabDelete = () => {
   return (
        <div>
       <button 
-      onClick={ handleDelete}
+      onClick={ handleDelete} 
       style={{
         display: hasEventSelected ? '' : 'none'
       }}
