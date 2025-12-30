@@ -1,9 +1,9 @@
-
+import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom'
 import LoginPage from '../auth/pages/LoginPage';
 import CalendarPage from '../calendar/pages/CalendarPage';
 import useAuthStore from '../hooks/useAuthStore';
-import { useEffect } from 'react';
+
 
 const AppRouter = () => {
 
@@ -24,7 +24,7 @@ const AppRouter = () => {
         <div>
             <Routes>
                 {
-                    (status === 'not_auth')
+                    (status === 'not-authenticated')
                         ?(
                             <>
                              <Route path='/auth/*' element={<LoginPage />} />
