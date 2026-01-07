@@ -6,7 +6,7 @@ import esES from 'date-fns/locale/es'
 import Navbar from '../../auth/components/Navbar'
 import { getMessagesES } from './getMessages'
 import CalendarEvent from '../componenets/CalendarEvent'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import CalendarModal from '../componenets/CalendarModal'
 import { useUiStore } from '../../hooks/useUiStore'
 import useCalendarStore from '../../hooks/useCalendarStore'
@@ -29,14 +29,14 @@ const localizer = dateFnsLocalizer({
 const CalendarPage = () => {
 
   const {openDateModal} = useUiStore();
-  const {events, setActiveEvent} = useCalendarStore();
+  const {events, setActiveEvent, startLoadingEvents} = useCalendarStore();
 
  const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week')
 
 
 
   const evetStyleGetter = (event, start, end, isSelected) => {
-    console.log({ event, start, end, isSelected })
+    // console.log({ event, start, end, isSelected })
 
     const style = {
       backgroundColor: '#347CF7',
@@ -65,8 +65,10 @@ const CalendarPage = () => {
     setLastView(event)
 
   }
-
-
+   
+  useEffect(() => {
+    startLoadingEvents()
+  }, [])
 
   return (
     <div>
