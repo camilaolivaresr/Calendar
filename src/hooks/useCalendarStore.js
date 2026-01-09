@@ -20,17 +20,17 @@ const useCalendarStore = () => {
         //update event 
         try {
 
-        if (calendarEvent.id) {
+            if (calendarEvent.id) {
 
-            await calendarApi.put(`/events/${calendarEvent.id}`, calendarEvent);
-            dispatch(onUpdateEvent({ ...calendarEvent, user }));
-            return;
+                await calendarApi.put(`/events/${calendarEvent.id}`, calendarEvent);
+                dispatch(onUpdateEvent({ ...calendarEvent, user }));
+                return;
 
-        }
-        const { data } = await calendarApi.post('/events', calendarEvent);
-        // console.log({ data })
+            }
+            const { data } = await calendarApi.post('/events', calendarEvent);
+            // console.log({ data })
 
-        dispatch(onAddNewEvent({ ...calendarEvent, id: data.evento.id, user }))
+            dispatch(onAddNewEvent({ ...calendarEvent, id: data.evento.id, user }))
 
         } catch (error) {
 
@@ -41,15 +41,15 @@ const useCalendarStore = () => {
 
     }
 
-    const startDeletingEvent = async() => {
+    const startDeletingEvent = async () => {
 
-                try {
-            
-                    await calendarApi.delete(`/events/${activeEvent.id}`);
-              dispatch(onDeleteEvent());
+        try {
+
+            await calendarApi.delete(`/events/${activeEvent.id}`);
+            dispatch(onDeleteEvent());
             return;
-        
-    } catch (error) {
+
+        } catch (error) {
 
             console.log(error)
             Swal.fire('Error no se pudo eliminar', error.response.data.msg, 'error');
